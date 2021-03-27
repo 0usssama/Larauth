@@ -16,13 +16,13 @@ use App\Http\Controllers\ForgotController;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-Route::get('/hello', [HelloWorld::class, 'hello']);
-Route::post('/login', [AuthController::class, 'login']);
 /*
 Testing purposes
 Route::get('/user', [AuthController::class, 'getUser'])->middleware("auth:api");
 */
+Route::get('/hello', [HelloWorld::class, 'hello']);
 
-
+Route::post('/login', [AuthController::class, 'login']);
 Route::post('/register', [AuthController::class, "register"]);
 Route::post('/forgot', [ForgotController::class, "forgot"]);
+Route::post("/reset", [ForgotController::class, "reset"]);
