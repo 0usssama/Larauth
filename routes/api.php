@@ -1,9 +1,10 @@
 <?php
 
-use App\Http\Controllers\AuthController;
-use App\Http\Controllers\HelloWorld;
 use Illuminate\Http\Request;
+use App\Http\Controllers\HelloWorld;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ForgotController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,3 +25,4 @@ Route::get('/user', [AuthController::class, 'getUser'])->middleware("auth:api");
 
 
 Route::post('/register', [AuthController::class, "register"]);
+Route::post('/forgot', [ForgotController::class, "forgot"]);
