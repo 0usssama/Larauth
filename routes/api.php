@@ -21,3 +21,6 @@ Route::post('/login', [AuthController::class, 'login']);
 Testing purposes
 Route::get('/user', [AuthController::class, 'getUser'])->middleware("auth:api");
 */
+
+
+Route::post('/register', [AuthController::class, "register"]);

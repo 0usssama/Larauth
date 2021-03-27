@@ -2,12 +2,22 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\RegisterRequest;
 use Exception;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+
 
 class AuthController extends Controller
 {
+
+    public function index()
+    {
+       //for testing purposes
+        return view("register");
+    }
     //
     public function login(Request $request)
     {
@@ -56,5 +66,28 @@ class AuthController extends Controller
     {
         
         return Auth::user();
+    }
+
+    public function register(RegisterRequest $request)
+    {
+     
+        try{
+           
+            $user = User::create([
+
+                "first_name"=> $request->input("first_name"),
+                "last_name"=> $request->input("last_name"),
+                "email"=> $request->input("email"),
+                "password"=> Hash::make($request->input("password"))
+        
+        
+            ]);
+            return $user;
+        }catch(Exception $exception){
+
+            return response([
+                "message"=> $exception->getMessage()
+            ], 400);
+        }
     }
 }
