@@ -33,6 +33,8 @@ class ForgotController extends Controller
         Mail::to("email@email.com")->send(new PasswordResetMail("http://127.0.0.1:8002/reset/" . $token));
        
         try{
+            //get latest token reset
+
             DB::table('password_resets')->insert([
                 "email"=> $email, 
                 "token"=> $token

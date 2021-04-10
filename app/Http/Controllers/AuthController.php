@@ -37,8 +37,11 @@ class AuthController extends Controller
 
             return response([
                 "message"=> "success",
-                "token" => $token,
-                "user"=> $user
+                "user"=> [
+                    "infos" => $user,
+                    "token"=> $token 
+                ]
+                
             ], 200);
 
            
@@ -70,6 +73,7 @@ class AuthController extends Controller
 
     public function register(RegisterRequest $request)
     {
+      
      
         try{
            
